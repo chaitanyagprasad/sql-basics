@@ -1,0 +1,51 @@
+-- auto increment demo
+create table employee(
+	id smallserial primary key,
+	name varchar(10) not null,
+	age int
+);
+
+insert into employee (id, name, age) values (1,'chait', 26);
+
+insert into employee (id, name, age) values (2,'raja', 35);
+
+-- inserting without specifying id values
+-- id values are automatically generated as we specified
+insert into employee (name, age) values ('chait', 26);
+
+insert into employee (name, age) values ('raja', 35);
+
+insert into employee (name, age) values ('pinky', 27);
+
+-- 9042 0000 001
+insert into employee (name, age) values ('sameer', 23);
+insert into employee (name, age) values ('sridhar', 21);
+
+insert into employee (name, age) values ('aditi', 21);
+
+-- specifying default values for city column
+alter table employee 
+add column city varchar(10) default 'Bangalore';
+
+-- iserting with a different value for city column
+insert into employee (name, age, city) values ('arpit', 28, 'Chennai');
+
+-- taking default value for city column
+insert into employee (name, age) values ('Bharath', 28);
+
+-- check constraint
+alter table employee 
+add check (age >= 18) not null;
+
+insert into employee (name, age) values ('akash', 18);
+
+-- select statement
+-- SELECT <WHATEVER WE WANT TO SEE> FROM <WHICHEVER TABLE WE WANT TO SEE FROM> <ADDITIONAL CLAUSES, IF ANY>;
+
+select * from employee;
+
+select "name" from employee;
+
+select "name", "age" from employee;
+
+select "name", "age", "city" from employee;
